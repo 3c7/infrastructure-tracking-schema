@@ -1,0 +1,11 @@
+title: Minimal rule
+uuid: 28ebfa51-952d-4b67-b67a-33d638d29b98
+author: Nils Kuhnert
+status: experimental
+created: 2020-10-07 00:00:00
+classification:
+  - type: tlp
+    value: white
+condition:
+  - service: shodan
+    query: HTTP/1.1 413 teapot

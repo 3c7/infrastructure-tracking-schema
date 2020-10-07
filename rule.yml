@@ -1,0 +1,31 @@
+title: Advanced Rule
+uuid: 56722e01-7d19-4c49-ace3-6212f8370047
+related:
+  - uuid: 28ebfa51-952d-4b67-b67a-33d638d29b98
+    type: derives
+status: production
+description: |
+  This is an advanced rule.
+  I tried to use every field in order to create a good example file.
+author: Nils Kuhnert
+status: experimental
+created: 2020-10-07 12:40:00
+modified: 2020-10-07 12:45:00
+classification:
+  - type: tlp
+    value: green
+  - type: pap
+    value: green
+condition:
+  - OR:
+    - AND:
+      - service: shodan
+        query: HTTP/1.1 413 teapot
+      - service: shodan
+        query: SSH-2.0-OpenSSH_7.4p1 Ubuntu-10
+    - service: shodan
+      query: HTTP/2 413 teapot
+threatactor: EvilSloth
+malwarefamily: Generic
+references:
+  - https://github.com/3c7/infrastructure-tracking-schema

@@ -1,0 +1,60 @@
+# Generic infrastructure tracking rule schema
+# This is a schema file for https://pypi.org/project/yamale/#examples
+include('rule')
+---
+rule:
+  # Every rule needs a titlem which is a string
+  title: str()
+  # The uuid is an uuid4 value in order to uniquely identify rules
+  uuid: str(36)
+  # Related is a list of related rules, the definition can be found below
+  related: list(include('relation'), required=False)
+  # Status can be one of
+  # - experimental
+  # - production
+  # - deprecated
+  status: enum('experimental', 'production', 'deprecated')
+  # Description is a string which is not required, but recommended
+  description: str(required=False)
+  # Similar to description, author is an optional string, but should be used
+  author: str()
+  # Created timestamp
+  created: timestamp()
+  # Optional modified timestamp
+  modified: timestamp(required=False)
+  # Classification is a list of classifications, the definition can be found below
+  # Example:
+  # classification:
+  #   - type: tlp
+  #     value: white
+  classification: list(include('classification', min=1))
+  # Condition is a combination of queries and logical operators. This allows query chaining, but can be used for single queries also:
+  # condition:
+  #   - servcie: shodan
+  #     query: HTTP/1.1 418 teapot
+  condition: list(include('logic'), include('query'))
+  # Information related to clustering, as string
+  threatactor: str(required=False)
+  malwarefamily: str(required=False)
+  # References can be a list of strings, e.g. links to blog posts or similar
+  references: list(str(), required=False)
+---
+# A logic object itself can include several logic objects or queries
+logic:
+  AND: list(include('logic'), include('query'), min=2, required=False)
+  OR: list(include('logic'), include('query'), min=2, required=False)
+---
+# A query itself contains the service and a query string
+query:
+  service: str()
+  query: str()
+---
+# Relations to other rules need the uuid and the type of relation
+relation:
+  uuid: str(36)
+  type: enum('derives', 'deprecates')
+---
+# Due to several different classification taxonomies, the classification can be adjusted this way
+classification:
+  type: str()
+  value: str()
