@@ -8,9 +8,8 @@ description: |
   This is an advanced rule.
   I tried to use every field in order to create a good example file.
 author: Nils Kuhnert
-status: experimental
-created: 2020-10-07 12:40:00
-modified: 2020-10-07 12:45:00
+created: 2020-10-07
+modified: 2020-10-07
 classification:
   - type: tlp
     value: green
