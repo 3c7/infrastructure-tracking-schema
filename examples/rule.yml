@@ -16,14 +16,21 @@ classification:
   - type: pap
     value: green
 condition:
-  - OR:
-    - AND:
-      - service: shodan
-        query: HTTP/1.1 413 teapot
-      - service: shodan
-        query: SSH-2.0-OpenSSH_7.4p1 Ubuntu-10
-    - service: shodan
-      query: HTTP/2 413 teapot
+  - AND:
+    - OR:
+      - AND:
+        - AND:
+          - service: "shodan"
+            query: "HTTP/1.1 413 teapot"
+          - NOT:
+              service: "shodan"
+              query: "HTTP/1.1 200 OK"
+        - service: "shodan"
+          query: "SSH-2.0-OpenSSH_7.4p1 Ubuntu-10"
+      - service: "shodan"
+        query: "HTTP/2 413 teapot"
+    - service: "passivedns"
+      query: "domain:*.site"
 threatactor: EvilSloth
 malwarefamily: Generic
 references:

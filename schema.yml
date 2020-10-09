@@ -18,10 +18,10 @@ rule:
   description: str(required=False)
   # Similar to description, author is an optional string, but should be used
   author: str()
-  # Created timestamp
-  created: date()
-  # Optional modified timestamp
-  modified: date(required=False)
+  # Created date as YYYY-mm-dd string
+  created: day()
+  # Optional modified date as YYYY-mm-dd string
+  modified: day(required=False)
   # Classification is a list of classifications, the definition can be found below
   # Example:
   # classification:
@@ -45,6 +45,7 @@ rule:
 logic:
   AND: list(include('logic'), include('query'), min=2, required=False)
   OR: list(include('logic'), include('query'), min=2, required=False)
+  NOT: any(include('query'), list(include('logic'), min=2), required=False)
 ---
 # A query itself contains the service and a query string
 query:
