@@ -21,7 +21,7 @@ condition:
     - service: "shodan"
       query: "HTTP/1.1 200 X-Super-Suspicious-Header: Honk!"
     - service: "passivedns"
-      query: "regex:^\w-\w\.site$"
+      query: "regex:^\\w-\\w\\.site$"
 ```
 
 Various services and their queries can be implemented in your own tooling in your own way. The key idea is to combine
