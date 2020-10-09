@@ -29,3 +29,12 @@ threatactor: EvilSloth
 malwarefamily: Generic
 references:
   - https://github.com/3c7/infrastructure-tracking-schema
+# Example for the custom key
+custom:
+  alerts:
+    mattermost:
+      - team: my-team
+        channel: notifications
+  ingest:
+    elasticsearch: myindex
+    misp: myeventuuid

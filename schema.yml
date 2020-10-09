@@ -19,9 +19,9 @@ rule:
   # Similar to description, author is an optional string, but should be used
   author: str()
   # Created timestamp
-  created: timestamp()
+  created: date()
   # Optional modified timestamp
-  modified: timestamp(required=False)
+  modified: date(required=False)
   # Classification is a list of classifications, the definition can be found below
   # Example:
   # classification:
@@ -38,6 +38,8 @@ rule:
   malwarefamily: str(required=False)
   # References can be a list of strings, e.g. links to blog posts or similar
   references: list(str(), required=False)
+  # Allow custom properties under this key
+  custom: any(required=False)
 ---
 # A logic object itself can include several logic objects or queries
 logic:
