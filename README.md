@@ -18,9 +18,9 @@ classification:
     value: white
 condition:
   - AND:
-    - service: "shodan"
+    - type: "shodan"
       query: "HTTP/1.1 200 X-Super-Suspicious-Header: Honk!"
-    - service: "passivedns"
+    - type: "passivedns"
       query: "regex:^\\w-\\w\\.site$"
 ```
 

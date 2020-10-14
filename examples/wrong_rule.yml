@@ -4,5 +4,5 @@ status: experimental
 created: 2020-10-07
 classification: tlp-white
 condition:
-  - service: shodan
+  - type: shodan
     query: HTTP/1.1 413 teapot

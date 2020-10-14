@@ -7,5 +7,5 @@ classification:
   - type: tlp
     value: white
 condition:
-  - service: shodan
+  - type: shodan
     query: HTTP/1.1 413 teapot

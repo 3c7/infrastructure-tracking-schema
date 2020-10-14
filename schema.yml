@@ -49,7 +49,9 @@ logic:
 ---
 # A query itself contains the service and a query string
 query:
-  service: str()
+  # Query type can either be a service or something like a local processor. This was named "service" before.
+  type: str()
+  # The actual query
   query: str()
 ---
 # Relations to other rules need the uuid and the type of relation
