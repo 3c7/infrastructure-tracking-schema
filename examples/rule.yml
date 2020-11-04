@@ -21,14 +21,14 @@ condition:
       - AND:
         - AND:
           - type: "shodan"
-            query: "HTTP/1.1 413 teapot"
+            query: "HTTP/1.1 418 teapot"
           - NOT:
               type: "shodan"
               query: "HTTP/1.1 200 OK"
         - type: "shodan"
           query: "SSH-2.0-OpenSSH_7.4p1 Ubuntu-10"
       - type: "shodan"
-        query: "HTTP/2 413 teapot"
+        query: "HTTP/2 418 teapot"
     - type: "passivedns"
       query: "domain:*.site"
 threatactor: EvilSloth
